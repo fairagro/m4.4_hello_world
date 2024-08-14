@@ -1,0 +1,14 @@
+SELECT DISTINCT ?item ?itemLabel ?speakers ?part ?date WHERE {
+    ?item wdt:P31 wd:Q1288568.  # ?item is an instance of language (Q1288568)
+    ?item p:P1098 ?speakerStatement.  # ?item has number of speakers (P1098)
+    ?speakerStatement ps:P1098 ?speakers.  # Number of speakers is ?speakers
+    ?speakerStatement pq:P585 ?date.  # Point in time (P585)
+
+    OPTIONAL { ?speakerStatement pq:P518 ?part. }
+    OPTIONAL { ?speakerStatement pq:P3005 ?place. }
+    FILTER (!BOUND(?place))
+    FILTER (?part = wd:Q36870 || ?part = wd:Q125421 || !BOUND(?part))  # Filter where ?part is Q36870 or not set
+     
+    SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+ORDER BY ?itemLabel
