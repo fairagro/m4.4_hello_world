@@ -2,14 +2,6 @@
 We want to focus on the human workflow in some existing tools to have somewhat of an unified test case. In this test case the user wants to know which are the most spoken languages.
 The requirements for a "Hello World Example" are written down here: https://github.com/fairagro/m4.4_concept/issues/6#issuecomment-2286097413
 
-## Scope of tested Tools
-* Renku https://github.com/fairagro/m4.4_concept/issues/8
-* REANA https://github.com/fairagro/m4.4_concept/issues/7
-* Heliport https://github.com/fairagro/m4.4_concept/issues/11
-* AIIDA https://github.com/fairagro/m4.4_concept/issues/10
-* DataLad https://github.com/fairagro/m4.4_concept/issues/9
-* ...?
-
 ## Definition of the "Human Workflow"
 ### Definition
 There are some csv-Files already prepared. The first one is `population.csv` which contains the current population of all countries on earth. This one can be assumed to be local on the users disk. Two other csv Files `remote_data/speakers.csv` and `remote_data/speakers_revised.csv` are considered to be pulled from the internet (e.g. `wget` using their GitHub URL or [this Gist](https://gist.github.com/JensKrumsieck/c82a18402154dd452593230bbcf09f65))
@@ -19,7 +11,12 @@ The users intention is get the sum of humans on earth which can be used to calcu
 The user may is required to write a Workflow file (e.g. CWL) by hand to use the to-be-tested Tools...
 
 ### Desired Result
+The desired plot is:
+
+![](./results.svg)
+
 The desired `result.csv` is:
+
 ```csv
 language,speakers,percentage
 Bangla,300000000,3.8990180176129665
@@ -33,9 +30,6 @@ Punjabi,125000000,1.6245908406720693
 Russian,154000000,2.0014959157079892
 Standard Mandarin,1090951810,14.178802545124924
 ```
-The desired plot is
-
-![](./results.svg)
 
 ### Workflow
 1. Read `population.csv` from local disk
@@ -51,3 +45,10 @@ The desired plot is
 ## Data origin
 The Data in the csv-Files is fetched from WikiData's SPARQL Endpoint using the script in `./dev`
 
+## Scope of to-be-tested Tools
+* Renku https://github.com/fairagro/m4.4_concept/issues/8
+* REANA https://github.com/fairagro/m4.4_concept/issues/7
+* Heliport https://github.com/fairagro/m4.4_concept/issues/11
+* AIIDA https://github.com/fairagro/m4.4_concept/issues/10
+* DataLad https://github.com/fairagro/m4.4_concept/issues/9
+* ...?
